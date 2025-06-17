@@ -30,7 +30,7 @@ public class Species {
     @OneToMany(mappedBy = "species")
     private Set<Pet> pets;
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }
