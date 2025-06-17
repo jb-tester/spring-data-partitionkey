@@ -32,8 +32,11 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
             @Param("lastname") String lastname
     );
 
-
     long countByLastname(String lastname);
+
+    @Query("SELECT new org.example.springdatapartitionkey.repository.PartitionCount(p.lastname, COUNT(p)) " +
+           "FROM People p GROUP BY p.lastname ORDER BY p.lastname")
+    List<PartitionCount> countByPartitions();
 
 
     boolean existsByFirstnameAndLastname(String firstname, String lastname);
