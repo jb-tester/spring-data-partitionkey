@@ -1,6 +1,6 @@
 package org.example.springdatapartitionkey;
 
-import org.example.springdatapartitionkey.repository.PeopleService;
+import org.example.springdatapartitionkey.services.PeopleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package org.example.springdatapartitionkey;
+package org.example.springdatapartitionkey.data.pets;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.PartitionKey;

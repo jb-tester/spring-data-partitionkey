@@ -1,16 +1,16 @@
-package org.example.springdatapartitionkey;
+package org.example.springdatapartitionkey.data.pets;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class SpeciesId implements Serializable {
+public class PetId implements Serializable {
     private Long id;
     private String partitionKey;
 
-    public SpeciesId() {
+    public PetId() {
     }
 
-    public SpeciesId(Long id, String partitionKey) {
+    public PetId(Long id, String partitionKey) {
         this.id = id;
         this.partitionKey = partitionKey;
     }
@@ -35,7 +35,7 @@ public class SpeciesId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SpeciesId that = (SpeciesId) o;
+        PetId that = (PetId) o;
         return Objects.equals(id, that.id) && Objects.equals(partitionKey, that.partitionKey);
     }
 

@@ -1,6 +1,5 @@
-package org.example.springdatapartitionkey.repository;
+package org.example.springdatapartitionkey.data.people;
 
-import org.example.springdatapartitionkey.People;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -34,7 +33,7 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
 
     long countByLastname(String lastname);
 
-    @Query("SELECT new org.example.springdatapartitionkey.repository.PartitionCount(p.lastname, COUNT(p)) " +
+    @Query("SELECT new org.example.springdatapartitionkey.services.PartitionCount(p.lastname, COUNT(p)) " +
            "FROM People p GROUP BY p.lastname ORDER BY p.lastname")
     List<PartitionCount> countByPartitions();
 

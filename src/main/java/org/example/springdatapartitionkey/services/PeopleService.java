@@ -1,7 +1,7 @@
-package org.example.springdatapartitionkey.repository;
+package org.example.springdatapartitionkey.services;
 
-import org.example.springdatapartitionkey.repository.PartitionCount;
-import org.example.springdatapartitionkey.repository.PeopleRepository;
+import org.example.springdatapartitionkey.data.people.PartitionCount;
+import org.example.springdatapartitionkey.data.people.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
