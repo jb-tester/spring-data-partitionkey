@@ -1,4 +1,4 @@
-
+SET search_path TO partitions_test;
 -- insert some species data
 INSERT INTO species (id, name, binomial_name, class, family, partition_key) VALUES
     (1, 'Siberian Husky', 'Canis lupus familiaris', 'Mammalia', 'Canidae', 'Asia'),

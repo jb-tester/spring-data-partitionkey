@@ -32,7 +32,7 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
 
     long countByLastname(String lastname);
 
-    @Query("SELECT new org.example.springdatapartitionkey.services.PartitionCount(p.lastname, COUNT(p)) " +
+    @Query("SELECT new org.example.springdatapartitionkey.data.people.PartitionCount(p.lastname, COUNT(p)) " +
            "FROM People p GROUP BY p.lastname ORDER BY p.lastname")
     List<PartitionCount> countByPartitions();
 

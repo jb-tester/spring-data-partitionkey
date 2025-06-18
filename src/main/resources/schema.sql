@@ -1,3 +1,6 @@
+drop schema if exists partitions_test cascade;
+create schema partitions_test;
+SET search_path TO partitions_test;
 create table species
 (
     id            bigint not null,
@@ -9,28 +12,28 @@ create table species
     PRIMARY KEY (id, partition_key)
 ) PARTITION BY LIST (partition_key);
 
-CREATE TABLE species_asia
+create table if not exists  species_asia
     PARTITION OF species FOR VALUES IN ('Asia');
 
-CREATE TABLE species_africa
+create table if not exists  species_africa
     PARTITION OF species FOR VALUES IN ('Africa');
 
-CREATE TABLE species_north_america
+create table if not exists  species_north_america
     PARTITION OF species FOR VALUES IN ('North America');
 
-CREATE TABLE species_south_america
+create table if not exists  species_south_america
     PARTITION OF species FOR VALUES IN ('South America');
 
-CREATE TABLE species_europe
+create table if not exists  species_europe
     PARTITION OF species FOR VALUES IN ('Europe');
 
-CREATE TABLE species_australia
+create table if not exists  species_australia
     PARTITION OF species FOR VALUES IN ('Australia');
 
-CREATE TABLE species_antarctica
+create table if not exists  species_antarctica
     PARTITION OF species FOR VALUES IN ('Antarctica');
 
-CREATE TABLE pets
+create table if not exists  pets
 (
     id            bigint NOT NULL,
     name          varchar(255),
@@ -41,24 +44,24 @@ CREATE TABLE pets
     PRIMARY KEY (id, partition_key)
 ) PARTITION BY LIST (partition_key);
 
-CREATE TABLE pets_asia
+create table if not exists  pets_asia
     PARTITION OF pets FOR VALUES IN ('Asia');
 
-CREATE TABLE pets_africa
+create table if not exists  pets_africa
     PARTITION OF pets FOR VALUES IN ('Africa');
 
-CREATE TABLE pets_north_america
+create table if not exists  pets_north_america
     PARTITION OF pets FOR VALUES IN ('North America');
 
-CREATE TABLE pets_south_america
+create table if not exists  pets_south_america
     PARTITION OF pets FOR VALUES IN ('South America');
 
-CREATE TABLE pets_europe
+create table if not exists  pets_europe
     PARTITION OF pets FOR VALUES IN ('Europe');
 
-CREATE TABLE pets_australia
+create table if not exists  pets_australia
     PARTITION OF pets FOR VALUES IN ('Australia');
-CREATE TABLE pets_antarctica
+create table if not exists  pets_antarctica
     PARTITION OF pets FOR VALUES IN ('Antarctica');
 
 ALTER TABLE IF EXISTS pets
@@ -69,15 +72,15 @@ ALTER TABLE IF EXISTS pets
 
 
 -- Range partitions:
-CREATE TABLE people (
+create table if not exists  people (
                        id BIGINT,
                        firstname VARCHAR(255),
                        lastname VARCHAR(255) NOT NULL,
                        PRIMARY KEY (lastname, id)
 ) PARTITION BY RANGE (lastname);
 
-CREATE TABLE people_a_m PARTITION OF people
+create table if not exists  people_a_m PARTITION OF people
     FOR VALUES FROM ('A') TO ('N');
 
-CREATE TABLE people_n_z PARTITION OF people
+create table if not exists  people_n_z PARTITION OF people
     FOR VALUES FROM ('N') TO ('Z');
