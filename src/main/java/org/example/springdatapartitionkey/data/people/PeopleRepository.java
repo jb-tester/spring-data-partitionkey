@@ -18,9 +18,9 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
     List<People> findByLastnameOrderByFirstnameAsc(String lastname);
 
 
-    @Query("SELECT p FROM People p WHERE p.lastname = :lastname AND LOWER(p.firstname) LIKE LOWER(CONCAT('%', :firstnamePattern, '%'))")
+    @Query("SELECT p FROM People p WHERE (LOWER(p.lastname) LIKE LOWER(CONCAT('%', :lastnamePattern, '%'))) AND (LOWER(p.firstname) LIKE LOWER(CONCAT('%', :firstnamePattern, '%')))")
     List<People> searchByLastnameAndFirstnamePattern(
-            @Param("lastname") String lastname,
+            @Param("lastnamePattern") String lastname,
             @Param("firstnamePattern") String firstnamePattern
     );
 
@@ -35,6 +35,21 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
     @Query("SELECT new org.example.springdatapartitionkey.data.people.PartitionCount(p.lastname, COUNT(p)) " +
            "FROM People p GROUP BY p.lastname ORDER BY p.lastname")
     List<PartitionCount> countByPartitions();
+
+    @Query(
+            value = """
+            SELECT partition_name,
+                   COUNT(*) AS row_count
+            FROM (
+                SELECT 'people_a_m' AS partition_name FROM people_a_m
+                UNION ALL
+                SELECT 'people_n_z' AS partition_name FROM people_n_z
+            ) AS partition_data
+            GROUP BY partition_name
+        """,
+            nativeQuery = true
+    )
+    List<Object[]> countRowsInPartitions();
 
 
     boolean existsByFirstnameAndLastname(String firstname, String lastname);

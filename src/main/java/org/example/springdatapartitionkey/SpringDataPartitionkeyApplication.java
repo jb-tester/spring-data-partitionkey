@@ -1,6 +1,7 @@
 package org.example.springdatapartitionkey;
 
 import org.example.springdatapartitionkey.services.PeopleService;
+import org.example.springdatapartitionkey.services.PetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,13 +15,18 @@ public class SpringDataPartitionkeyApplication {
     }
 
         @Bean
-            public CommandLineRunner commandLineRunner(PeopleService peopleService) {
+            public CommandLineRunner commandLineRunner(PeopleService peopleService, PetService petService) {
                 return args -> {
                     System.out.println("--------------------------------------");
                     peopleService.printPartitionCounts();
                     System.out.println("--------------------------------------");
                     peopleService.printAllPeopleNames();
                     System.out.println("--------------------------------------");
+                    peopleService.printPeopleNamesByPartition();
+                    System.out.println("--------------------------------------");
+                    petService.printAllPets();
+                    petService.printSpecieForPet();
+                    petService.printAllSpecies();
                 };
             }
 }

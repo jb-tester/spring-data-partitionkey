@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PeopleService {
@@ -24,5 +25,12 @@ public class PeopleService {
         for (People p : peopleRepository.findAll()) {
             System.out.println(p.getFirstname() + " " + p.getLastname());
         }
+    }
+    public void printPeopleNamesByPartition(){
+        List<Object[]> res = peopleRepository.countRowsInPartitions();
+        res.forEach(row -> {
+            System.out.printf("Partition '%s': %d entries%n",
+                    row[0], row[1]);
+        });
     }
 }

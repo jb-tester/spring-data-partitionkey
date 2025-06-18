@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.PartitionKey;
 
 @Entity
-@Table(name = "people")
+@Table(name = "people", schema = "partitions_test")
 public class People {
 
 	@Id

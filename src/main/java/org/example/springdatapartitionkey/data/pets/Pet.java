@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.PartitionKey;
 
 @Entity
-@Table(name = "pets")
+@Table(name = "pets", schema = "partitions_test")
 @IdClass(PetId.class)
 public class Pet {
     @Id
@@ -22,7 +22,7 @@ public class Pet {
     @ManyToOne
     @JoinColumns({
         @JoinColumn(name = "specie_id", referencedColumnName = "id"),
-        @JoinColumn(name = "partition_key", referencedColumnName = "partition_key", insertable = false, updatable = false)
+        @JoinColumn(name = "partition_key", referencedColumnName = "partition_key")//, insertable = false, updatable = false)
     })
     private Species species;
 
@@ -73,5 +73,17 @@ public class Pet {
 
     public void setSpecies(Species species) {
         this.species = species;
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+               "id=" + id +
+               ", partitionKey='" + partitionKey + '\'' +
+               ", name='" + name + '\'' +
+               ", sex='" + sex + '\'' +
+               ", age=" + age +
+               ", species=" + species +
+               '}';
     }
 }

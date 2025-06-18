@@ -5,7 +5,7 @@ import org.hibernate.annotations.PartitionKey;
 import java.util.Set;
 
 @Entity
-@Table(name = "species")
+@Table(name = "species", schema = "partitions_test")
 @IdClass(SpeciesId.class)
 public class Species {
     @Id
@@ -85,5 +85,17 @@ public class Species {
 
     public void setPets(Set<Pet> pets) {
         this.pets = pets;
+    }
+
+    @Override
+    public String toString() {
+        return "Species{" +
+               "id=" + id +
+               ", partitionKey='" + partitionKey + '\'' +
+               ", name='" + name + '\'' +
+               ", binomialName='" + binomialName + '\'' +
+               ", speciesClass='" + speciesClass + '\'' +
+               ", family='" + family + '\'' +
+               '}';
     }
 }
