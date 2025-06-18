@@ -19,6 +19,8 @@ public class SpringDataPartitionkeyApplication {
                     System.out.println("--------------------------------------");
                     peopleService.printPartitionCounts();
                     System.out.println("--------------------------------------");
+                    peopleService.printAllPeopleNames();
+                    System.out.println("--------------------------------------");
                 };
             }
 }

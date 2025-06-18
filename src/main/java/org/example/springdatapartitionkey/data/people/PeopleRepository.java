@@ -13,7 +13,6 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
 
 
     List<People> findByLastname(String lastname);
-    List<People> findByFirstname(String firstname);
     Optional<People> findByFirstnameAndLastname(String firstname, String lastname);
     List<People> findByFirstnameContainingIgnoreCase(String firstnamePattern);
     List<People> findByLastnameOrderByFirstnameAsc(String lastname);
