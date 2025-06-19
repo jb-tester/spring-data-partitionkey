@@ -28,6 +28,7 @@ public class SpringDataPartitionkeyApplication {
                     petService.printSpecieForPet();
                     petService.printAllPetsBySpecieName();
                     petService.printAllSpecies();
+                    petService.printSpeciesByArealAndFamily();
                 };
             }
 }
