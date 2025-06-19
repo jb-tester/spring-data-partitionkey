@@ -16,7 +16,7 @@ public interface SpeciesRepository extends CrudRepository<Species, SpeciesId> {
     @NativeQuery("""
             select * from species
             where family = :name
-            and partitioKey = :partitionKey
+            and partitionKey = :partitionKey
             """)
     List<Species> findSpeciesByFamilyOrAreal(String name, String partitionKey);
 }
