@@ -24,7 +24,7 @@ public interface PeopleRepository extends JpaRepository<People, Long> {
             @Param("firstnamePattern") String firstnamePattern
     );
 
-    @Query("SELECT p FROM People p WHERE p.firstname = :firstname OR p.lastname = :lastname")
+    @Query(value = "SELECT * FROM people WHERE firstname = :firstname OR lastname = :lastname", nativeQuery = true)
     List<People> findByFirstnameOrLastname(
             @Param("firstname") String firstname,
             @Param("lastname") String lastname

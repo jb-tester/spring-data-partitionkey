@@ -20,26 +20,32 @@ public class PetService {
     }
 
     public void printAllPets() {
-        System.out.println("====== all pets:  =====");
+        System.out.println("====== all pets:  =======================");
         for (Pet pet : petRepository.findAll()) {
             System.out.println(pet);
         }
-        System.out.println("===================");
+        System.out.println("=========================================");
     }
 
     public void printSpecieForPet() {
-        System.out.println("====== specie for pet by its name: =====");
+        System.out.println("====== specie for pet by its name: ======");
         System.out.println(petRepository.findSpeciesByName("Raja"));
-        System.out.println("===================");
+        System.out.println("=========================================");
     }
 
     ;
     public void printAllSpecies() {
-        System.out.println("====== all species:=====");
+        System.out.println("====== all species:======================");
         for (Species species : speciesRepository.findAll()) {
             System.out.println(species);
         }
-        System.out.println("===================");
+        System.out.println("=========================================");
+    }
+
+    public void printAllPetsBySpecieName() {
+        System.out.println("====== pets by specie name(Kangaroo):====");
+         speciesRepository.findPetsBySpeciesName("Kangaroo").forEach(System.out::println);
+        System.out.println("=========================================");
     }
 
     ;

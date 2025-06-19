@@ -26,6 +26,7 @@ public class SpringDataPartitionkeyApplication {
                     System.out.println("--------------------------------------");
                     petService.printAllPets();
                     petService.printSpecieForPet();
+                    petService.printAllPetsBySpecieName();
                     petService.printAllSpecies();
                 };
             }
