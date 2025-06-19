@@ -50,7 +50,7 @@ public class PetService {
 
     public void printSpeciesByArealAndFamily() {
         System.out.println("====== species by areal and family: =====");
-        speciesRepository.findSpeciesByFamilyOrAreal("Felidae", "Africa");
+        speciesRepository.findSpeciesByFamilyOrAreal("Felidae", "Africa").forEach(System.out::println);
         System.out.println("===================");
     }
 
